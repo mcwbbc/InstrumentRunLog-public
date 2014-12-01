@@ -3,8 +3,11 @@ Instrument Run Log
 This project was created to track instrument usage within the Biotechnolgy
 and Bioenginnering and Innovation Centers at the Medical College of Wisconsin.  
 This was originally being tracked with an MS Access database, but has since 
-grown into a full web application.
+grown into a full web application being used by the Mass Spec Service Center.
+
+As of Decemeber 2014 we are no longer using this particular tool. However,
+we have decided to make it available in the event that anyone else finds it
+useful. 
 
 Points of contact for this application are:
 Andrew Vallejos avallejos@mcw.edu
-Dan Bullock danbullock@mcw.edu
