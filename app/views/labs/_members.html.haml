@@ -1,0 +1,5 @@
+.members
+	%h3 Members:
+	%ul
+		-@lab.users.each do |u|
+			%li{:class => cycle('labOdd', 'labEven')}= u.email

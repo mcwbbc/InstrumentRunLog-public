@@ -1,0 +1,30 @@
+%h1 Charts
+
+#chart_options{:style => 'width: 14em; float: left'}
+	%div{:style => 'margin-bottom: 1em'} Select Report:
+	%br
+	#hoursXpress.button{:style => 'width: 100%;'} Instrument Hours
+	%br
+	#hours2yearsXpress.button{:style => 'width: 100%;'} Instrument Hours, 2 year comparison
+	%br
+	#instrumentsOverTime.button{:style => 'width: 100%;'} Instrument Timeline
+	%br
+	#usageAndMaintenance.button{:style => 'width:100%'} Usage and Maintenance
+	%br
+	#userTotals{:style => 'width:100%'} User Totals
+	%br
+#chart_area
+	%canvas#chart_area_xs{:width => 600, :height => 600}
+.clear
+#help{}
+	Chart area can be expanded or shrunk by grabbing the right edge of the pane with your mouse.
+
+%script{:src => '/javascripts/canvasXpress/js/canvasXpress.min.js', :type => 'text/javascript'}
+%script{:src => '/javascripts/charts.js', :type => 'text/javascript' }
+
+:javascript
+	$('#hoursXpress').button().click(function(){ instrument_hours_all();	});
+	$('#hours2yearsXpress').button().click(function(){ instrument_hours_two_years(); })
+	$('#instrumentsOverTime').button().click(function(){ instrument_usage_last_year(); });
+	$('#usageAndMaintenance').button().click(function(){ instrument_usage_and_maintenance_last_year(); });
+	$('#userTotals').button().click(function(){ user_totals_last_year(); });

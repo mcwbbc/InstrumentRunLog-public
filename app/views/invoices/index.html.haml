@@ -1,0 +1,23 @@
+%h1 Invoices
+%span.action= link_to 'New Invoice', new_invoice_path
+%table.data_table
+	%thead
+		%tr
+			%th Date Created
+			%th Number
+			%th Entries
+			%th PI
+			%th View
+	%tbody
+		- @invoices.each do |i|
+			%tr
+				%td= i.created_at.to_date
+				%td= i.id
+				%td= i.entries.size
+				%td= i.entries.inject(Array.new){|a, e| a.push e.pi }.join(',')
+				%td= link_to 'View', invoice_path(i), :class => 'view'
+
+%script{:src => '/javascripts/jquery.dataTables.js', :text => 'text/javascript'}
+%script{:src => '/javascripts/TableTools.min.js', :text => 'text/javascript'}
+:javascript	
+	addDataTable({aaSorting: [[0,"desc"]]});

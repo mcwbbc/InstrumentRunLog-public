@@ -1,0 +1,8 @@
+%tr.blankRow
+	-if b.name.nil?
+		%td.blank.counter{:id => counter}= text_field_tag 'entry[blanks_attributes][][name]', "Blank #{counter}", {'data-name' => true}
+	-else
+		%td.blank.counter{:id => counter}= text_field_tag 'entry[blanks_attributes][][name]', "#{b.name}", {'data-name' => true}
+	%td.blank= text_field_tag 'entry[blanks_attributes][][runs]', b.runs, {:runs => true}
+	%td.blank= text_field_tag 'entry[blanks_attributes][][gradient]', b.gradient, {:gradient => true}
+= hidden_field_tag 'entry[blanks_attributes][][id]', b.id

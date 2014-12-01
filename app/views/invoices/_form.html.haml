@@ -1,0 +1,30 @@
+= form_for @invoice do |f|
+	- if @invoice.errors.any?
+		#errorExplanation
+			%h2
+				= pluralize(@invoice.errors.count, "error")
+				prohibited this entry from being saved:
+			%ul
+				- @invoice.errors.full_messages.each do |msg|
+					%li= msg
+
+	%span.action= submit_or_cancel(f)
+	%table.data_table
+		%thead
+			%tr
+				%th Include?
+				%th Date
+				%th Samples
+				%th Digests
+				%th Instrument
+				%th Billable Run Time
+				%th PI
+				%th Project
+				%th Funding Source
+				%th Amount Due
+		%tbody
+			- @entries.each do |e|
+				%tr
+					%td= check_box_tag 'include[]', e.id
+					=render 'invoice_line', {:entry => e, :show_pi => true}
+				

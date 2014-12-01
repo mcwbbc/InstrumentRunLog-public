@@ -1,0 +1,13 @@
+%td.info= entry.date_run.to_date
+%td.info= entry.samples.size
+%td.info= entry.billable_digests
+%td.info= entry.instrument
+%td.info= entry.billable_run_time
+- if show_pi
+	%td.info= entry.pi + "/" + entry.department
+%td.info= entry.project.name
+%td.info= entry.purchase_order
+%td.info{:style => 'font-weight: bold;'}= number_to_currency entry.amount_due
+
+
+

@@ -1,0 +1,11 @@
+%h1 New Invoice
+
+= render 'form'
+
+%script{:src => '/javascripts/jquery.dataTables.js', :text => 'text/javascript'}
+
+%script{:src => '/javascripts/TableTools.min.js', :text => 'text/javascript'}
+
+:javascript	
+	addDataTable({aaSorting: [[1,"desc"]]});
+	

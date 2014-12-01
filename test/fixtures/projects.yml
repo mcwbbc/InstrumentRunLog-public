@@ -1,0 +1,12 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+testProject:
+    name: TestProject
+
+dummyProject:
+    name: DummyProject
+    
+outsideProject:
+    name: Outside collaborator
+    additional_required: true
+    

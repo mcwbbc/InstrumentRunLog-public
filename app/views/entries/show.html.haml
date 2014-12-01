@@ -1,0 +1,97 @@
+-if @entry.unbillable
+	:javascript
+		$('.content').append('<div class=unbillable>Unbillable Entry</div>');
+		$('.content').css('border','thick solid red');
+
+-if current_user.manager? #and !@entry.has_invoice?
+	.action= link_to 'Edit', edit_entry_path(@entry), :class => 'edit'
+	
+.entry_header{:style => "font-size: 24pt; width: 200px; text-align: center;"} Entry #{@entry.id}
+.entry_column
+	%table.entry_table
+		%tr
+			%td.label Date Created:
+			%td.data= @entry.created_at.to_date
+		%tr
+			%td.label Operator:
+			%td.data= @entry.user.name
+		%tr
+			%td.label Lab:
+			- if @entry.lab
+				%td.data= @entry.lab.name
+			- else
+				%td.data= @entry.user.lab.name
+		%tr
+			%td.label Project:
+			%td.data= @entry.project.name
+		- if @entry.additional_required?
+			%tr
+				%td.label Primary Investigator:
+				%td.data= @entry.pi
+			%tr
+				%td.label Department:
+				%td.data= @entry.department
+			%tr
+				%td.label Funding Source:
+				%td.data= @entry.purchase_order
+.entry_column
+	%table.entry_table
+		%tr
+			%td.label Date Analysed:
+			%td.data= @entry.date_run.to_date
+		%tr
+			%td.label Instrument:
+			%td.data= @entry.instrument
+		%tr
+			%td.label # of Blanks:
+			%td.data= @entry.total_blank_runs
+		%tr
+			%td.label Blank Gradient(minutes):
+			%td.data= @entry.blank_run_time
+		%tr
+			%td.label Billable Run Time(minutes):
+			%td.data= @entry.billable_run_time
+		%tr
+			%td.label Total Run Time(minutes):
+			%td.data= @entry.total_run_time
+		-unless(@entry.updated_by_id.nil?)
+			%tr
+				%td.label Updated By:
+				%td.data
+					= @entry.updated_by.name + " "
+					%i= @entry.updated_at.to_date
+.clear
+.samples{:style => "margin-top: 8px;"}
+	%span.sample_header Comments:
+	%p
+	= @entry.comments	
+.clear
+.samples
+	%span.sample_header Samples
+	%table.sampleTable
+		%tr.sample
+			%th{:colspan => 7} Name
+		%tr.sample
+			%th Category
+			%th # of Digests
+			%th Loading Time
+			%th Total Runs
+			%th Sample Gradient (min)
+			%th Billable Run Time (min)
+			- if current_user.manager?
+				%th Action
+		= render @entry.samples, {:entry_id => @entry.id, :summary => true}
+.clear
+- unless @entry.blanks.empty?
+	.samples
+		%span.sample_header Blanks
+		%table.sampleTable
+			%tr.sample
+				%th{:colspan => 6} Name
+			%tr.sample
+				%th Total Runs
+				%th Blank Gradient (min)
+				- if current_user.manager?
+					%th Action
+			= render @entry.blanks, {:entry_id => @entry.id, :summary => true}
+

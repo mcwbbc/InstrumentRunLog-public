@@ -1,0 +1,23 @@
+%tr
+	%td= entry.date_run.nil? ? entry.created_at.to_date : entry.date_run.to_date
+	%td= entry.user.name
+	%td= entry.project.name
+	%td= entry.pi
+	%td= entry.department
+	%td= entry.instrument
+	-if log
+		%td= entry.total_run_time
+		%td= entry.billable_run_time
+		%td= entry.billable_digests
+		%td= entry.samples.size
+		%td= entry.total_runs
+	%td
+		= link_to 'View', entry_path(entry), :class => 'view'
+		= link_to 'Edit', edit_entry_path(entry), :class => 'edit' if (current_user.admin? || !entry.has_invoice? && current_user.manager?)
+	%td{:style => 'color: red;'}
+		-if entry.has_invoice?
+			%div.ui-state-highlight.ui-corner-all{:style => 'width: 1.5em;height: 1.5em;margin:auto;'}
+				%span.ui-icon.ui-icon-flag{:style => 'margin:auto;', :title => 'Entry Has Been Invoiced'}
+		-if entry.unbillable
+			%div.ui-state-error.ui-corner-all{:style => 'width: 1.5em;height: 1.5em;margin:auto;'}
+				%span.ui-icon.ui-icon-flag{:style => 'margin:auto;', :title => 'Entry is Unbillable'}

@@ -1,0 +1,20 @@
+%tr.sample{:class => cycle('sampleOdd', 'sampleEven')}
+	%td{:colspan => '11'}= sample.name.nil? ? "Sample #{sample_counter + 1}" : sample.name
+%tr.sample{:class => cycle('sampleOdd', 'sampleEven')}
+	%td.detail= sample.category
+	%td.detail= sample.digests
+	-if summary
+		%td.detail= sample.loading_time || "--"
+	-unless summary
+		%td.detail= number_to_currency sample.sample_price
+		%td.detail= number_to_currency sample.digest_price
+		%td.detail{:style => 'font-weight: bold;'}= number_to_currency sample.prep_cost
+	%td.detail= sample.runs
+	%td.detail= sample.gradient
+	%td.detail= sample.billable_time
+	-unless summary
+		%td.detail= number_to_currency sample.hour_price
+		%td.detail{:style => 'font-weight: bold;'}= number_to_currency sample.gradient_cost
+		%td.detail{:style => 'font-weight: bold;'}= number_to_currency sample.cost
+	- if current_user.manager? and !(sample.entry.invoice)
+		%td= button_to 'delete', {:controller => 'samples', :action => :destroy, :id => sample.id, :entry_id => entry_id }, :method => 'delete', :confirm => "Are you sure?"

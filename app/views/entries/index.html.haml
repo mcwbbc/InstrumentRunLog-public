@@ -1,0 +1,20 @@
+%h1 Entries for #{current_user.name}
+
+%table.data_table
+	%thead
+		%tr
+			%th Date Run
+			%th User ID
+			%th Funding Source
+			%th PI
+			%th Dept.
+			%th Instrument
+			%th Actions
+			%th Invoiced?
+	%tbody
+		=render @entries, {:log => false}
+		
+%script{:src => '/javascripts/jquery.dataTables.js', :text => 'text/javascript'}
+%script{:src => '/javascripts/TableTools.min.js', :text => 'text/javascript'}
+:javascript	
+	addDataTable({aaSorting: [[0,"desc"]]});

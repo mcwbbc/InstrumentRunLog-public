@@ -1,0 +1,110 @@
+:javascript
+	var optional_required = ["#{names_with_add_req.join('","')}"];
+	//flag entry as unbillable
+	$(document).ready(function() {
+		flag_entry_as_unbillable();
+	});
+
+= form_for @entry do |f|
+	.entry
+		.label User: 
+		.value= @entry.user.nil? ? current_user.email : @entry.user.email 
+		- if @current_user.manager?
+			.label{:style => 'float:right;'}
+				Unbillable?
+				=f.check_box :unbillable
+		.clear
+		
+		.label Lab: 
+		.value= @entry.user.nil? ? current_user.lab.name : @entry.user.lab.name
+		.clear
+		
+		.label Analysis Date:
+		.value
+			= f.text_field :date_run, :class=>'datepicker_select'
+			%span{:style => "font-size: 10pt;"} (YYYY-MM-DD)
+		.clear
+		
+		.label Instrument:
+		.value= f.select :instrument, instruments_available
+		.clear
+		
+		.label Project:
+		.value= f.select :project_id, projects_available
+		.clear
+		
+		#optional
+			.label PI:
+			.value= f.text_field :pi
+			.clear
+			
+			.label Dept:
+			.value= f.text_field :department
+			.clear
+			
+			.label Funding Source:
+			.value
+				= f.text_field :purchase_order
+				%span{:style => "font-style: italic; color: gray; size: 0.8em"} (cost center - project number)
+			.clear
+			
+			.label Comments:
+			.value= f.text_area :comments, {:cols => 58, :rows => 10}
+			.clear
+			
+		%br
+		Total Time:
+		%span#totalTime 0
+		min.
+		%p
+		
+		= render 'samples/form', {:samples => @entry.samples, :entry_id => @entry.id, :categories => categories_available}
+		
+		%p
+		
+		= render 'blanks/form', {:blanks => @entry.blanks, :entry_id => @entry.id}
+		
+		/%table.blank
+		/	%tr
+		/		%th.blank # of Blanks
+		/		%th.blank Blank Gradient (min)
+		/		%th.disclaimer(rowspan=2) 
+		/			There are no fees
+		/			%br 
+		/			for running blanks
+		/	%tr.blankRow
+		/		%td.blank#blank= f.text_field :blank_runs
+		/		%td.blank#blank= f.text_field :blank_gradient
+		%br
+		
+		.actions
+			%span.action= submit_or_cancel(f)
+			
+			- if @entry.errors.any?
+				#errorExplanation.ui-state-error
+					%h2
+						= pluralize(@entry.errors.count, "error")
+						prohibited this entry from being saved:
+					%ul
+						- @entry.errors.full_messages.each do |msg|
+							%li= msg
+:javascript
+	
+	addFunctions2EntryForm();
+	
+	//update category based on instrument
+	$('#entry_instrument').change(function() {
+		updateCategories();
+	});
+	
+	$('#entry_unbillable').change(function(){
+		flag_entry_as_unbillable();
+	});
+	
+	$('#errorExplanation').dialog({modal:'true', title:'Error Message!', width:800, dialogClass: 'ui-state-error'});
+	
+	entryFormButtons();
+	
+	$(".datepicker_select").datepicker({dateFormat: 'yy-mm-dd'});
+	
+	

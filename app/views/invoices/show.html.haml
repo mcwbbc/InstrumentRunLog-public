@@ -1,0 +1,33 @@
+.title
+	%span.title= "Invoice: #{@invoice.id}"
+	%br
+	%span.info 
+		Created on:
+		= @invoice.created_at.to_date
+	%br
+	%span.action= link_to 'Return', invoices_path
+	%span.action= link_to 'export as text (right click)', invoice_path(@invoice, :format => :text) 
+.invoice_summary
+	Summary
+	= render :partial => 'entry', :collection => @invoice.entries, :locals => {:details => false}
+	= render :partial => 'total_due', :locals => {:total_amount_due => @invoice.total_amount_due}
+.details_button
+	%a{:id => "itemized_details", :status => "closed", :href => '#'} Click to expand details
+.itemized_details
+	Itemized
+	= render :partial => 'entry', :collection => @invoice.entries, :locals => {:details => true}
+	= render :partial => 'total_due', :locals => {:total_amount_due => @invoice.total_amount_due}
+	
+:javascript
+	itemizedInvoiceButton();
+	
+	$("a#itemized_details").click(function(){
+		var button = $("a#itemized_details");
+		button.attr("status") == 'closed' ? 
+			button.attr("status", "open") : 
+			button.attr("status", "closed");
+		itemizedInvoiceButton();
+		$(".invoice_summary").toggle('blind', 'slow');
+		$(".itemized_details").toggle('blind', "slow");
+		
+	});

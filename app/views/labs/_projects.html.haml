@@ -1,0 +1,5 @@
+.projects
+	%h3 Projects:
+	%ul
+		- @lab.projects.each do |p|
+			%li{:class => cycle('labOdd', 'labEven')}= p.name

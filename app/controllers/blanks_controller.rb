@@ -1,0 +1,2 @@
+class BlanksController < ApplicationController
+end

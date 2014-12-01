@@ -1,0 +1,9 @@
+=form_for Category.new, :remote => true, :html => {:id => :category_form} do |f|
+	.field
+		%span.label New category name:
+		%br
+		=f.text_field :name
+		%br
+		=f.submit 'Add'
+		or
+		%a#reset{:href => '/price_models/new'} Back

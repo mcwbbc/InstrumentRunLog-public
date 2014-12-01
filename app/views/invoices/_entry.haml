@@ -1,0 +1,38 @@
+.invoice_entry
+	.invoice_investigator= "Primary Investigator: #{entry.pi}"
+	.invoice_department= "Department: #{entry.department}"
+	.clear
+	%table.info
+		%tr.info
+			%th.info Date
+			%th.info Samples
+			%th.info Billable Digests
+			%th.info Instrument
+			%th.info{:style => "white-space:normal;width:15em;"} Billable Instrument Time (minutes)
+			%th.info Project
+			%th.info Funding Source
+			%th.info Amount Due
+
+			%tr.infoOdd
+				=render 'invoice_line', {:entry => entry, :show_pi => false}
+	-if details
+		.invoice_sample
+			%table.info
+				%caption.invoice_sample Sample Details
+				%thead
+					%tr.sample
+						%th{:colspan => '11'} Name
+					%tr.sample
+						%th Category
+						%th # of Digests
+						%th Sample Rate
+						%th Digest Rate
+						%th Prep Cost
+						%th Runs
+						%th Gradient (minutes)
+						%th Instrument Time (minutes)
+						%th Hourly Rate
+						%th Time Cost 
+						%th Sample Cost
+					%tbody
+						= render entry.samples, {:entry_id => entry.id, :summary => false}

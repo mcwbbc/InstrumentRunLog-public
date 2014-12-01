@@ -1,0 +1,5 @@
+%tr
+	%td= user.email
+	%td= user.lab.name.capitalize
+	%td= user.role_name.capitalize
+	%td= link_to 'Edit', edit_user_path(user), :class => 'edit'

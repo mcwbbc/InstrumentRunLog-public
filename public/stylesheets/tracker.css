@@ -1,0 +1,415 @@
+.add_remove_buttons {
+	font-size: 8pt;
+}
+
+.add_remove_samples{
+	padding-bottom: 2px;
+}
+
+h1{
+	margin: 1em;
+}
+
+.labEven, .labOdd{
+	border: solid thin gray;
+	padding: 0.2em;
+}
+
+.labEven{
+	background-color: #B8B8B8;
+}
+
+.labOdd{
+	background-color: #D8D8D8;
+}
+
+div.action{
+	float: right;
+	margin-top: 4px;
+	z-index: 2;
+	width: 30px;
+	text-align: right;
+}
+
+.content{
+	background-color: #FFFFFF;
+	width: 90%;
+	text-align: center;
+	margin: 0px auto;
+	font: 12pt "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+}
+
+.comments, .actions {
+	padding-top: 10px;
+	clear: both;
+	float: left;
+	text-align: left;
+}
+
+.clear{
+	clear: both;
+}
+
+.data {
+	width: auto;
+	margin: auto;
+}
+
+.edit, .view, .clone, #add, #remove {
+	font-size: 8pt;
+}
+
+
+div.entry, .profile_form, .lab_form, .price_model_form, .invoice_entry,
+.maintenance_entry {
+	background-color: #EEEEEE;
+	border: thin solid #CCCCCC;
+	padding: 1em;
+}
+
+.maintenance_entry{
+	width: 80%; 
+	margin: auto;
+	float:none;
+	text-align: left;
+	white-space: normal;
+}
+
+.maintenance_entry .data{
+	width: 100%;
+	padding: 4px;
+}
+
+.profile_form, .lab_form, .project_form{
+	text-align: left;
+	width: 190px;
+	white-space: nowrap;
+	margin: 0px auto;
+}
+
+.project_form
+{
+	text-align: center;
+	width: 300px;
+}
+
+
+div.entry, div.samples{
+	white-space: nowrap;
+	float:left;
+	margin: 0px auto;
+	text-align: left;
+}
+
+div.samples{
+	margin-top: 1em;
+}
+
+.entry_form{
+	margin: 0px auto;
+	width: 55%;
+}
+
+.entry_column {
+	float: left;
+	padding: 0px 20px 10px 20px;
+}
+
+#field {
+	padding-top:2px;
+}
+
+table {
+	border-collapse:collapse;
+	background-color: #3baae3;
+	border: thin solid #2694e8;
+}
+
+td {
+	padding: 4px;
+}
+
+table.entry_table{
+	text-align: left;
+	border: thin solid #2694e8;
+}
+
+table.entry_table td{
+	padding: 8px;
+	border: thin solid #2694e8;
+}
+
+table.entry_table td.data{
+	background-color: #D7EBF9;
+	width: 10em;
+}
+
+table.entry_table td.label{
+	background-color: #3BAAE3;
+	color: #F2F5F7;
+}
+
+
+table.info {
+	width:1002px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 15px;
+}
+
+/* invoice */
+div.invoice_entry{
+	margin-bottom: 2px;
+}
+caption.invoice_entry{
+	background-color: #EEEEEE;
+	font-weight: bold;
+	padding-top: 1em;
+}
+
+div.invoice_sample {
+	padding-bottom: 2em;
+}
+
+caption.invoice_sample {
+	text-align:left;
+}
+
+.invoice_investigator, .invoice_department {
+	width: 40%;
+	padding: 2px;
+}
+
+.invoice_investigator{
+	text-align: right;
+	float: left;
+}
+
+.invoice_department {
+	text-align: left;
+	float: right;
+}
+
+.invoice_total {
+	clear: both;
+	text-align: right;
+	padding-right: 35px;
+}
+
+.detail{
+	font-style: italic;
+}
+
+/* entry form */
+div.label{
+	width: 120px;
+	text-align: right;
+	padding-right: 2px;
+	float: left;
+	margin: 1px;
+}
+
+div.value{
+	width: 120px;
+	text-align: left;
+	padding-left: 2px;
+	float: left;
+	margin: 1px;
+}
+
+span.new{
+	font: 8pt serif;
+}
+
+.price_model{
+	text-align: left;
+	margin: 0px auto;
+	width: 250px;
+}
+
+.pricing {
+	border: solid #333333 2px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+td.pricing, th.pricing{
+	padding: 3px;
+	text-align: right;
+}
+
+table.blank{
+	padding-top: 4px;
+	background-color: #B0E2FF;
+}
+
+th.blank{
+
+}
+
+th.disclaimer{
+	padding: 2px;
+	text-align: left;
+	border: none;
+	text-align: center;
+}
+
+table.optional {
+	background-color: #EEEEEE;
+}
+
+#optional{
+	padding-top: 4px;
+}
+
+
+.profile_form, .lab_form{
+	text-align: left;
+	width: 180px;
+	white-space: nowrap;
+	margin: 0px auto;
+}
+
+.price_model_form{
+	text-align: left;
+	width: 200px;
+	white-space: nowrap;
+	margin: 0px auto;
+}
+
+.projects, .members {
+	text-align: left;
+	padding: 2px;
+	width: 200px;
+	margin: 0px auto;
+}
+.entry_labels{
+	text-align:left;
+	float: left;
+	padding-left: 1em;
+	padding-bottom: 2em;
+}
+
+.samples{
+	padding-left: 1em;
+}
+
+#sampleTable, table.blank{
+	width: 600px;
+}
+
+.sampleTable {
+	background-color: #3baae3;
+}
+
+tr.sample td, tr.sample th, th.blank, th.info{
+	text-align: center;
+	padding: 3px;
+	border: thin solid #2694e8;
+}
+
+tr.sample th, th.blank, th.disclaimer, th.info{
+	background-color: #4CBBF4;
+	color: #f2f5f7;
+}
+
+tr.sampleOdd td, tr.infoOdd td{
+	background-color: #d7ebf9;
+	border: thin solid #2694e8;
+}
+
+tr.sampleEven td, tr.infoEven td{
+	background-color: #e4f1fb;
+	border: thin solid #2694e8;
+}
+
+tr.sampleRow td, tr.blankRow td {
+	background-color: #d7ebf9;
+	text-align: center;
+	border: thin solid #2694e8;
+}
+
+.sample_header {
+	font-weight: bold;
+}
+
+.unbillable {
+	background-color: red;
+	color: white;
+	font-size: 1.2em;
+}
+/* Menu Styles */
+
+div.menu {
+	background-color: #FFFFFF;
+	padding: 2px;
+	font: 10pt "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+}
+
+span.menu {
+	font-size: 1.1em;
+}
+
+#menu_bar{
+	clear: both;
+}
+
+.menu_items{
+	float: left;
+}
+
+.menu_admin_items{
+	float: right;
+}
+
+.loggedin {
+	text-align: right;
+	width: 30%;
+	float:right;
+}
+
+.site_image{
+	width: 30%;
+	float: left;
+}
+
+.site_title{
+	width:40%;
+	text-align:center;
+	float: left;
+	color: #2694e8;
+	font: 30pt bold "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+}
+
+/*invoice title */
+
+div.title{
+	text-align: left;
+	padding-top: 2em;
+}
+
+span.title{
+	font: bold 30px;
+	text-align: left;
+}
+
+ul {
+	margin: auto;
+	text-align: left;
+}
+
+.details_button{
+	text-align: left;
+}
+
+.itemized_details{
+	display: none;
+}
+
+/* charts */
+
+#chart_area{
+	margin: auto; 
+	width: 600px; 
+	height: 600px;
+}

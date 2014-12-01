@@ -1,0 +1,23 @@
+= form_for @lab do |f|
+	.lab
+		- if @lab.errors.any?
+			#errorExplanation
+				%h2
+					= pluralize(@lab.errors.count, "error")
+					prohibited this user from being saved:
+				%ul
+					- @lab.errors.full_messages.each do |msg|
+						%li= msg
+
+		#field
+			= f.label :name
+			%br
+			= f.text_field :name
+		#field
+			%strong Projects:
+			- for project in Project.all(:order => 'name')
+				%br
+				= check_box_tag 'lab[project_ids][]', project.id, @lab.project_ids.include?(project.id), :id => dom_id(project)
+				= label_tag dom_id(project), project.name, :class => "check_box_label"
+		#field	
+			%span.action= submit_or_cancel(f)

@@ -1,0 +1,11 @@
+%h1 Labs
+%span.action= link_to 'New Lab', new_lab_path
+%table.info
+	%tr.info
+		%th.info Name
+		%th.info Edit
+	- @labs.each do |l|
+		%tr{:class => cycle('infoOdd', 'infoEven')}
+			%td.info= link_to l.name.capitalize, lab_path(l)
+			%td.info= link_to 'Edit', edit_lab_path(l), :class => 'edit'
+		

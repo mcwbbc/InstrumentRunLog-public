@@ -1,0 +1,24 @@
+#sample
+	.add_remove_samples
+		Add / Remove Samples:
+		%span.add_remove_buttons
+			%a#add{:href => '#'} Add Sample
+			%a#remove{:href => '#'} Remove Sample
+			%a#clone{:href => '#'} Clone Last Line
+	%table#sampleTable
+		%tbody
+			%tr.sample
+				%th.sample Name
+				%th.sample Loading Time(min)
+				%th.sample # of digests
+				%th.sample Total Runs
+				%th.sample Sample Gradient(min)
+				%th.sample Pricing
+			- count = 1
+			- if samples.size == 0
+				= render 'samples/sample_line', {:s => Sample.new, :categories => categories, :counter => count}
+			- else
+				- samples.each do |s|
+					= render 'samples/sample_line', {:s => s, :entry_id => entry_id, :categories => categories, :counter => count}
+					- count += 1
+			

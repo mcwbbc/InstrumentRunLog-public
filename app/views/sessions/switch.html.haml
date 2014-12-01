@@ -1,0 +1,11 @@
+%h1 Switch Accounts
+.warning{:style => 'padding-bottom: 2em;'}
+	You will have to log out and log back in if you switch to a non-admin account
+
+= form_tag 'session/change' do
+	#field 
+		= label_tag :email
+		%br
+		= text_field_tag :email
+	#action
+		= submit_tag 'Switch'

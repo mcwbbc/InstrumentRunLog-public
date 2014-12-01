@@ -1,0 +1,12 @@
+%tr
+	%td= maintenance_entry.date_conducted.to_date
+	%td= maintenance_entry.user.name
+	%td= maintenance_entry.instrument.name
+	%td= number_with_precision maintenance_entry.hours, precision: 2
+	%td
+		= link_to 'View', maintenance_entry_path(maintenance_entry), :class => 'view'
+		= link_to 'Edit', edit_maintenance_entry_path(maintenance_entry), :class => 'edit'
+		- if current_user.admin?
+			= button_to 'Delete', {:id => maintenance_entry.id, :action => "destroy"}, |
+														:confirm => "Are you sure?", :method => "delete", :class => 'trash'
+	

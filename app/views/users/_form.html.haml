@@ -1,0 +1,40 @@
+= form_for(@user) do |f|
+	.profile
+		- if @user.errors.any?
+			#errorExplanation
+				%h2
+					= pluralize(@user.errors.count, "error")
+					prohibited this user from being saved:
+				%ul
+					- @user.errors.full_messages.each do |msg|
+						%li= msg
+		- if current_user.admin?
+			#field
+				= f.label :email
+				%br
+				= f.text_field :email
+			#field
+			= f.label :role
+			%br
+				= f.select :role, User.roles_for_select
+		#field
+			= f.label :password
+			%br
+			= f.password_field :password
+		#field
+			= f.label :password_confirmation
+			%br
+			= f.password_field :password_confirmation
+		-if current_user.admin?
+			#field
+				= f.label :lab
+				= f.select :lab_id, Lab.all.collect{|p| [p.name, p.id]}
+		-else
+			%h3
+				= @user.lab.name.capitalize
+				Lab Projects
+			%ul
+				- @user.lab.projects.each do |p|
+					%li#project= p.name
+		#action
+			= submit_or_cancel(f)

@@ -1,0 +1,18 @@
+%h1 User Profiles
+
+%span.action= link_to 'New User Profile', new_user_path
+
+.data
+	%table.data_table
+		%thead
+			%tr
+				%th Email
+				%th Lab
+				%th Role
+				%th Edit
+		%tbody
+			=render @users
+%script{:src => '/javascripts/jquery.dataTables.js', :text => 'text/javascript'}
+%script{:src => '/javascripts/TableTools.min.js', :text => 'text/javascript'}
+:javascript	
+	addDataTable({aaSorting: [[0,"desc"]]});

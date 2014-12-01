@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  category: internal
+  instrument: ltq
+  digest_price: 0
+  hour_price: 50
+  sample_price: 0
+  effective_date: <%= Date.today %>
+  retire_date: <%= Date.today + 365 %>
+
+two:
+  category: collaborator
+  instrument: ltq
+  digest_price: 107
+  hour_price: 50
+  sample_price: 0
+  effective_date: <%= Date.today %>
+  retire_date: <%= Date.today + 365 %>

@@ -1,0 +1,6 @@
+testProject:
+    id: 1
+    name: test project
+additional:
+    name: more stuff
+    additional_required: true

@@ -1,0 +1,9 @@
+=form_for Instrument.new, :remote => true do |f|
+	.field
+		%span.label New instrument name:
+		%br
+		=f.text_field :name
+		%br
+		=f.submit 'Add'
+		or
+		%a#reset{:href => '/price_models/new'} Back

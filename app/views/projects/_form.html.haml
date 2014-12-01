@@ -1,0 +1,18 @@
+.project_form
+	= form_for(@project) do |f|
+		- if @project.errors.any?
+			#errorExplanation
+				%h2
+					= pluralize(@project.errors.count, "error")
+					prohibited this user from being saved:
+				%ul
+					- @project.errors.full_messages.each do |msg|
+						%li= msg
+		.project
+			.label Name:
+			.value= f.text_field :name
+			.clear
+			.label= f.check_box :additional_required
+			.value PI and Dept. Required?
+			.clear
+			= submit_or_cancel(f)

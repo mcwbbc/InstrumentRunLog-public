@@ -1,0 +1,5 @@
+%tr.sample{:class => cycle('sampleOdd', 'sampleEven')}
+	%td{:colspan => '11'}= blank.name.nil? ? "Sample #{blank_counter + 1}" : blank.name
+%tr.sample{:class => cycle('sampleOdd', 'sampleEven')}
+	%td.detail= blank.runs
+	%td.detail= blank.gradient

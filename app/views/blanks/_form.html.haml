@@ -1,0 +1,21 @@
+#sample
+	.add_remove_samples
+		Add / Remove Blanks:
+		%span.add_remove_buttons
+			%a#add_blank{:href => '#'} Add Blank
+			%a#remove_blank{:href => '#'} Remove Blank
+			%a#clone_blank{:href => '#'} Clone Last Line
+	%table#blankTable
+		%tbody
+			%tr.sample
+				%th.sample Name
+				%th.sample Total Runs
+				%th.sample Blank Gradient(min)
+			- count = 1
+			- if blanks.size == 0
+				= render 'blanks/blank_line', {:b => Blank.new, :counter => count}
+			- else
+				- blanks.each do |s|
+					= render 'blanks/blank_line', {:b => s, :entry_id => entry_id, :counter => count}
+					- count += 1
+			

@@ -1,0 +1,48 @@
+= form_for(@price_model, :html => {:id => 'model'}) do |f|
+	- if @price_model.errors.any?
+		#errorExplanation
+			%h2
+				= pluralize(@price_model.errors.count, "error")
+				prohibited this user from being saved:
+			%ul
+				- @price_model.errors.full_messages.each do |msg|
+					%li= msg
+	#field
+		#instrument
+			%span.label Instrument:
+			= f.select :instrument_id, Instrument.instruments_for_select
+		
+		#category
+			%span.label Category:
+			= f.select :category_id, Category.categories_for_select
+
+		%br
+		%span.label Sample Price:
+		%br
+		= f.text_field :sample_price
+		%br
+		%span.label Digest Price:
+		%br
+		= f.text_field :digest_price
+		%br
+		%span.label Hour Price:
+		%br
+		= f.text_field :hour_price
+		%br
+		%span.label Effective Date:
+		%br
+		= f.text_field :effective_date, :class => 'datepicker_select'
+		%br
+		%span.label Retire Date:
+		%br
+		= f.text_field :retire_date, :class => 'datepicker_select'
+	#action
+		= submit_or_cancel(f)
+	
+	#action
+		%span.new= link_to 'New Instrument', new_instrument_path(:format => :js), :remote => true, :id=>'new_instrument_link' 
+		%span.new= link_to 'New Category', new_category_path(:format => :js), :remote => true, :id=>'new_category_link' 
+		
+:javascript
+	$(".datepicker_select").datepicker({dateFormat: 'yy-mm-dd'});
+	

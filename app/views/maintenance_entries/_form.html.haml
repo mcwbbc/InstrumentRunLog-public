@@ -1,0 +1,39 @@
+= form_for @maintenance_entry do |f|
+	.maintenance_entry
+		.label User:
+		.value= @maintenance_entry.user.nil? ? current_user.email : @maintenance_entry.user.email 
+		.clear
+		
+		.tooltip{:title => 'Date Maintenance was conducted'}
+			.label Date:
+			.value= f.text_field :date_conducted, :class => 'datepicker_select'
+		.clear
+		
+		.tooltip{:title => 'Total Hours of Maintenance Conducted'}
+			.label Hours:
+			.value= number_field_tag 'maintenance_entry[hours]', nil, {:step => 'any'}
+		.clear
+		
+		.tooltip{:title => 'Select Instrument from Dropdown Menu'}
+			.label Instrument:
+			.value= f.select :instrument_id, instruments_for_select
+		.clear
+		
+		.label Brief Description:
+		.value= f.text_area :notes
+		.clear
+		
+		%span.action= submit_or_cancel(f)
+%br
+	- if @maintenance_entry.errors.any?
+		#errorExplanation.ui-state-error
+			%h2
+				= pluralize(@maintenance_entry.errors.count, "error")
+				prohibited this entry from being saved:
+			%ul
+				- @maintenance_entry.errors.full_messages.each do |msg|
+					%li= msg 
+		
+:javascript
+	$(".datepicker_select").datepicker({dateFormat: 'yy-mm-dd'});
+	$('#errorExplanation').dialog({modal:'true', title:'Error Message!', width:800, dialogClass: 'ui-state-error'});

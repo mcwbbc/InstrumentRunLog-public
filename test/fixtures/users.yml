@@ -1,0 +1,12 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+dummy:
+  email: dummy@test.edu
+  hashed_password: "e5e9fa1ba31ecd1ae84f75caaa474f3a663f05f4" # secret
+  lab: test
+
+admin:
+  email: admin@test.edu
+  hashed_password: "e5e9fa1ba31ecd1ae84f75caaa474f3a663f05f4" # secret
+  admin: 1
+  lab: test

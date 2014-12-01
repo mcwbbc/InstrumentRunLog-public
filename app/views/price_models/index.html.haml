@@ -1,0 +1,33 @@
+#pricing
+	%h1= @title
+	= link_to 'New Price Model', new_price_model_path
+	|
+	= @all ? link_to('Show Current') : link_to('Show All', '?show=all')
+	
+	%table.data_table.display
+		%thead
+			%tr 
+				%th Category
+				%th Instrument
+				%th $ per Sample
+				%th $ per Digest
+				%th $ per Hour
+				%th Effective Date
+				%th Retire Date
+				%th Edit
+		%tbody
+			- @price_models.each do |pm|
+				%tr
+					%td= pm.category.name
+					%td= pm.instrument.name
+					%td= number_to_currency pm.sample_price
+					%td= number_to_currency pm.digest_price
+					%td= number_to_currency pm.hour_price
+					%td= pm.effective_date
+					%td= pm.retire_date
+					%td= link_to('Edit', edit_price_model_path(pm), :class => 'edit')
+
+%script{:src => '/javascripts/jquery.dataTables.js', :text => 'text/javascript'}
+%script{:src => '/javascripts/TableTools.min.js', :text => 'text/javascript'}
+:javascript	
+	addDataTable({aaSorting: [[5,"desc"]]});

@@ -1,0 +1,43 @@
+.menu
+	.site_image
+		%img.logo{:src => '/images/BBCLogo.jpg', :alt => 'Bio Technology and Bioengineering Center', :height=>'55px'}>
+		%img.logo{:src => '/images/InnovationCenterLogo_0_0.jpg', :alt => 'BBC Innovation Center', :height=>'55px'}>
+	.site_title
+		%span{:style => 'vertical-align: middle;'} Instrument Tracker
+	.loggedin
+		You are logged in as: 
+		= current_user.email
+		%br
+		- if current_user.admin?
+			%span.logout= link_to '(Change Account)', switch_path
+		%span.logout= link_to '(Logout)', logout_path
+	
+	#menu_bar
+		.menu_items
+			%span.menu= link_to "Enter&nbsp;Run".html_safe, new_entry_path
+			%span.menu= link_to 'Run&nbsp;History'.html_safe, entries_path
+			%span.menu= link_to 'Maintenance&nbsp;Log'.html_safe, maintenance_entries_path
+			%span.menu= link_to 'User&nbsp;Profile'.html_safe, edit_user_path(current_user)
+
+		- if current_user.admin?
+			.menu_admin_items
+				&nbsp;&nbsp;
+				%span.menu{:style=>"font-weight:bold;"} Admin:
+	
+				%span.menu{:title => 'Add New Pricing, Instruments, and Categories'}= link_to 'Pricing', price_models_path
+				%span.menu= link_to 'Invoice', invoices_path
+				%span.menu= link_to 'Profiles', users_path
+				%span.menu= link_to 'Labs', labs_path
+				%span.menu= link_to 'Projects', projects_path
+				%span.menu= link_to 'Run&nbsp;Log'.html_safe, entries_log_path
+				-# %span.menu= link_to 'Charts'.html_safe, entry_charts_path
+		
+		- elsif current_user.manager? 
+			.menu_admin_items
+				&nbsp;&nbsp;
+				%span.menu{:style => "font-weight:bold;"} Manager:
+				%span.menu= link_to 'Run&nbsp;Log'.html_safe, entries_log_path
+					
+		.clear
+- if flash.notice
+	.notice= flash.notice

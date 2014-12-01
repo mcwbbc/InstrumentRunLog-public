@@ -1,0 +1,17 @@
+%h1 Maintenance Entries
+= link_to 'New Maintenance Record', new_maintenance_entry_path
+%table.data_table
+	%thead
+		%tr
+			%th Date Run
+			%th User ID
+			%th Instrument
+			%th Hours
+			%th Actions
+	%tbody
+		=render @maintenance_entries
+		
+%script{:src => '/javascripts/jquery.dataTables.js', :text => 'text/javascript'}
+%script{:src => '/javascripts/TableTools.min.js', :text => 'text/javascript'}
+:javascript	
+	addDataTable({aaSorting: [[0,"desc"]]});

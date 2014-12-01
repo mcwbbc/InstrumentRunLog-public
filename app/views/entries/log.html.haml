@@ -1,0 +1,16 @@
+%h1 Entries
+%span.action{:style => 'float: left;'}= link_to 'Export all as text (Right Click)', entries_log_path(:format => :text)
+%div{:style=> "width:auto; font-size:10pt;"}
+	%table.data_table.display
+		%thead
+			%tr
+				- run_log_header_array.each do |h|
+					%th= h
+				%th Actions
+				%th Invoiced?
+		%tbody
+			= render @entries, {:log => true}
+%script{:src => '/javascripts/jquery.dataTables.js', :text => 'text/javascript'}
+%script{:src => '/javascripts/TableTools.min.js', :text => 'text/javascript'}
+:javascript	
+	addDataTable({aaSorting: [[0,"desc"]]});

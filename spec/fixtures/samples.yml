@@ -1,0 +1,36 @@
+one:
+    digests: 2
+    runs: 2
+    gradient: 10
+    sample_price: 2
+    digest_price: 3
+    hour_price: 7
+    category: Testing
+    name: test sample
+two:
+    digests: 2
+    runs: 2
+    gradient: 10
+    sample_price: 2
+    digest_price: 3
+    hour_price: 7
+    category: Testing
+    name: test sample
+three:
+    digests: 2
+    runs: 2
+    gradient: 10
+    sample_price: 2
+    digest_price: 3
+    hour_price: 7
+    category: Testing
+    name: test sample
+four:
+    digests: 2
+    runs: 2
+    gradient: 10
+    sample_price: 2
+    digest_price: 3
+    hour_price: 7
+    category: Testing
+    name: test sample

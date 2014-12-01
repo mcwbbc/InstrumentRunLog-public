@@ -1,0 +1,45 @@
+%h1 Maintenance Record
+
+.maintenance_entry{:style => 'width: 50%; margin: auto;float:none;'}
+	.data
+		Date Conducted:
+		= @maintenance_entry.date_conducted.to_date
+	.clear	
+	
+	.data
+		Operator: 
+		= @maintenance_entry.user.name
+	.clear
+	
+	.data
+		Instrument: 
+		= @maintenance_entry.instrument.name
+	.clear
+	
+	.data
+		Time (Minutes):
+		= @maintenance_entry.minutes
+	.clear
+	
+	.data
+		Time (Hours):
+		= @maintenance_entry.hours
+	.clear
+	
+	.data
+		Date Entered:
+		= @maintenance_entry.created_at
+	.clear
+	
+	.data
+		Date Last Edited:
+		= @maintenance_entry.updated_at
+	.clear
+	
+	.data
+		Description:
+		%br
+		= @maintenance_entry.notes
+	.clear
+	
+= link_to 'back', maintenance_entries_path

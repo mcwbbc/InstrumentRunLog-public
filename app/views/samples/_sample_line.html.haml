@@ -1,0 +1,12 @@
+%tr.sampleRow
+	-if s.name.nil?
+		%td.sample.counter{:id => counter}= text_field_tag 'entry[samples_attributes][][name]', "Sample #{counter}", {'data-name' => true}
+	-else
+		%td.sample.counter{:id => counter}= text_field_tag 'entry[samples_attributes][][name]', "#{s.name}", {'data-name'=> true}
+	%td.sample= text_field_tag 'entry[samples_attributes][][loading_time]', s.loading_time, {'loading-time' => true}
+	%td.sample= text_field_tag 'entry[samples_attributes][][digests]', s.digests, {:digests => true}
+	%td.sample= text_field_tag 'entry[samples_attributes][][runs]', s.runs, {:runs => true}
+	%td.sample= text_field_tag 'entry[samples_attributes][][gradient]', s.gradient, {:gradient => true}
+	- s.category.nil? ? name = nil : name = s.category
+	%td.sample= select_tag 'entry[samples_attributes][][category]', options_for_select(categories), :class => 'entry_sample_categories'
+= hidden_field_tag 'entry[samples_attributes][][id]', s.id
